@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: mxXml
 Bundle-SymbolicName: de.mxro.xml
-Bundle-Version: 0.0.2.SNAPSHOT
+Bundle-Version: 0.0.2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: de.mxro.utils,
  org.dom4j,
