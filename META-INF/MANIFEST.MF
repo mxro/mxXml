@@ -5,7 +5,6 @@ Bundle-SymbolicName: de.mxro.xml
 Bundle-Version: 0.0.2.SNAPSHOT
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: de.mxro.utils,
- org.dom4j,
  org.w3c.tidy
 Bundle-ClassPath: src/main/resources/dom4j-1.6.1.jar,
  .
