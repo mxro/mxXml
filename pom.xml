@@ -45,6 +45,78 @@
     <!-- Resources End -->
 
     <plugins>
+    
+      <!--  The Maven bundle plugin generates Meta-data required for OSGi  -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<unpackBundle>true</unpackBundle>
+					<instructions>
+						<Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>${pom.version}</Bundle-Version>
+						<!--  <Embed-Dependency>*;scope=compile|runtime;inline=false
+						</Embed-Dependency>
+						<Embed-Directory>target/dependency</Embed-Directory> -->
+						<Export-Package>de.mxro.xml,
+ de.mxro.xml.style</Export-Package>
+						<!-- This statement can change the bundle classpath 
+						   <Bundle-ClassPath>.</Bundle-ClassPath> 
+						-->
+						<!-- This statements will use properties from the eclipse Manifest.MF file 
+						  <_include>META-INF/MANIFEST.MF</_include> 
+						-->
+					</instructions>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+
+				<executions>
+					<!--
+						This additional execution can extract all the JARs of the dependencies 
+						
+						<execution> <id>unpack-dependencies</id>
+						<phase>generate-resources</phase> <goals>
+						<goal>unpack-dependencies</goal> </goals> <configuration>
+						<includeGroupIds>org.swinglabs,org.jdesktop,com.sun</includeGroupIds>
+						</configuration> </execution>
+					-->
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!--  Cleanup necessary because of PDE tweaks -->
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${basedir}</directory>
+							<includes>
+								<include>*.jar</include>
+							</includes>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+    
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
@@ -53,7 +125,7 @@
         </configuration>
       </plugin>
       
-      <plugin>
+      <!-- <plugin>
       	<groupId>org.apache.maven.plugins</groupId>
       	<artifactId>maven-jar-plugin</artifactId>
       	<configuration>
@@ -61,7 +133,7 @@
       			<manifestFile>META-INF/MANIFEST.MF</manifestFile>
       		</archive>
         </configuration>
-      </plugin> 
+      </plugin> -->
       
       
       
@@ -74,7 +146,7 @@
   		<groupId>dom4j</groupId>
   		<artifactId>dom4j</artifactId>
   		<version>1.6.1</version>
-  		<scope>provided</scope>
+  		<scope>compile</scope>
   		<optional>false</optional>
   	</dependency>
   	<dependency>

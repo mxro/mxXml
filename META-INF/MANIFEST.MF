@@ -1,12 +1,14 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: mxXml
-Bundle-SymbolicName: de.mxro.xml
+Bundle-Name: Unnamed - de.mxro.xml:mxXml:jar:0.0.2-SNAPSHOT
+Bundle-SymbolicName: mxXml;singleton:=true
 Bundle-Version: 0.0.2.SNAPSHOT
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: de.mxro.utils,
- org.w3c.tidy
-Bundle-ClassPath: src/main/resources/dom4j-1.6.1.jar,
- .
+Import-Package: de.mxro.utils
 Export-Package: de.mxro.xml,
  de.mxro.xml.style
+Bundle-ClassPath: .,
+ dom4j-1.6.1.jar,
+ xml-apis-1.0.b2.jar,
+ mxUtilities-0.0.2-SNAPSHOT.jar,
+ thrdJTidy-8.0.1-SNAPSHOT.jar
