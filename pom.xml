@@ -1,11 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?><project>
+  <properties>
+		<module.group>de.mxro.xml</module.group>      <!--  Maven groupId -->
+		<module.name>mxXml</module.name>          <!--  Maven artifactId -->
+		<module.version>0.0.3-SNAPSHOT</module.version> <!--  Maven artifact version -->
+		<module.description>XML utility classes</module.description>
+		<module.url>http://www.mxro.de/</module.url>
+		<module.importedPackages>org.dom4j.io;resolution:=optional,
+                        javax.xml.namespace;resolution:=optional,
+                        javax.xml.parsers;resolution:=optional,
+                        javax.xml.stream;resolution:=optional,
+                        javax.xml.stream.events;resolution:=optional,
+                        javax.xml.stream.util;resolution:=optional,
+                        javax.xml.transform;resolution:=optional,
+                        javax.xml.transform.sax;resolution:=optional,
+                        javax.xml.transform.stream;resolution:=optional,
+                        org.w3c.dom,
+                        org.xml.sax,
+                        org.xml.sax.ext;resolution:=optional,
+                        org.xml.sax.helpers;resolution:=optional,
+                        com.sun.msv.datatype;resolution:=optional,
+                        com.sun.msv.datatype.xsd;resolution:=optional,
+                        com.sun.org.apache.xml.internal.serialize;resolution:=optional,
+                       
+                        org.xmlpull.v1;resolution:=optional,
+                        
+                        org.gjt.xpp;resolution:=optional,
+                        org.jaxen;resolution:=optional,
+                        org.jaxen.dom4j;resolution:=optional,
+                        org.jaxen.pattern;resolution:=optional,
+                        org.jaxen.saxpath;resolution:=optional,
+                        org.relaxng.datatype;resolution:=optional,
+                       
+                        *
+		</module.importedPackages>
+		<module.exportedContents></module.exportedContents>
+		<module.exportedPackages>de.mxro.xml,
+ de.mxro.xml.style	
+		</module.exportedPackages>
+		<module.embeddedDependencies>dom4j;inline=true,xml-apis;inline=true
+		</module.embeddedDependencies>
+		<module.embedTransitive>false
+		</module.embedTransitive>
+		<module.serviceDefinitions>
+		</module.serviceDefinitions>
+	</properties>
+  
+  <!--  DEPENDENCIES -->
+  <dependencies>
+  	<dependency>
+  		<groupId>dom4j</groupId>
+  		<artifactId>dom4j</artifactId>
+  		<version>1.6.1</version>
+  		
+  		<optional>false</optional>
+  	</dependency>
+  	<dependency>
+  	<groupId>xml-apis</groupId>
+  <artifactId>xml-apis</artifactId>
+  <version>1.0.b2</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.mxro.utils</groupId>
+  		<artifactId>mxUtilities</artifactId>
+  		<version>[0.0.1,)</version>
+  		<optional>false</optional>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.mxro.thrd.jtidy</groupId>
+  		<artifactId>thrdJTidy</artifactId>
+  		<version>[8.0.0,)</version>
+  		<optional>false</optional>
+  	</dependency>
+  </dependencies>
+  
   <modelVersion>4.0.0</modelVersion>
-  <groupId>de.mxro.xml</groupId>
-  <artifactId>mxXml</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
-  <packaging>bundle</packaging>
+ <groupId>${module.group}</groupId>
+	<artifactId>${module.name}</artifactId>
+	<version>${module.version}</version>
+	<name>${module.name}</name>
+	<description>${module.description}</description>
+	<url>${module.url}</url>
+	<packaging>bundle</packaging>
+	
   <build>
-  	<!-- Resources -->
+  	
+
+    <plugins>
+     <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+     <!-- FOR BUNDLE MANAGEMENT -->
+			<!--  The Maven bundle plugin generates Meta-data required for OSGi  -->
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>${pom.version}</Bundle-Version>
+						<Import-Package>${module.importedPackages}</Import-Package>
+						<Export-Package>${module.exportedPackages}</Export-Package>
+						<Service-Component>${module.serviceDefinitions}
+						</Service-Component>
+						<Embed-Dependency>${module.embeddedDependencies}
+						</Embed-Dependency>
+						<Embed-Directory>target/dependency</Embed-Directory>
+						<Embed-Transitive>${module.embedTransitive}</Embed-Transitive>
+						<_exportcontents>${module.exportedContents}</_exportcontents>
+					</instructions>
+				</configuration>
+			</plugin>
+			
+			<!-- MAVEN ECLIPSE PLUGIN -->
+               <!--
+				Dependency Plugin used to copy the dependency JARs into the root
+				project folder. There the Maven eclipse plugin will add them to the
+				classpath of PDE projects.
+			-->
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!--
+				Cleanup necessary because of PDE tweaks, clear the project directory
+			-->
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${basedir}</directory>
+							<includes>
+								<include>*.jar</include>
+							</includes>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+
+			<!--
+				Keep the MANIFEST.MF used by eclipse in sync with the MANIFEST.MF
+				created by the maven bundle plugin
+			-->
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<delete file="${basedir}/META-INF/MANIFEST.MF" />
+								<copy file="target/classes/META-INF/MANIFEST.MF" tofile="${basedir}/META-INF/MANIFEST.MF" />
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+    
+     
+     
+    
+   
+    </plugins>
+    
+    <!-- RESOURCES -->
     <resources>
 			<!-- This entry makes sure that resources, which lie in the same package as
 			     Java classes, are copied into the target. Often external libraries
@@ -44,179 +228,10 @@
 			</resource>
     </resources>
     <!-- Resources End -->
-
-    <plugins>
     
-      <!--  The Maven bundle plugin generates Meta-data required for OSGi  -->
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<!-- <unpackBundle>true</unpackBundle>-->
-					<instructions>
-						<Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
-						<Bundle-Version>${pom.version}</Bundle-Version>
-						  <Embed-Dependency>dom4j,xml-apis;scope=compile|runtime;inline=false
-						</Embed-Dependency>
-						<Embed-Directory>target/dependency</Embed-Directory> 
-						<Export-Package>de.mxro.xml,
- de.mxro.xml.style</Export-Package>
-                        <Import-Package>org.dom4j.io;resolution:=optional,
-                        javax.xml.namespace;resolution:=optional,
-                        javax.xml.parsers;resolution:=optional,
-                        javax.xml.stream;resolution:=optional,
-                        javax.xml.stream.events;resolution:=optional,
-                        javax.xml.stream.util;resolution:=optional,
-                        javax.xml.transform;resolution:=optional,
-                        javax.xml.transform.sax;resolution:=optional,
-                        javax.xml.transform.stream;resolution:=optional,
-                        org.w3c.dom,
-                        org.xml.sax,
-                        org.xml.sax.ext;resolution:=optional,
-                        org.xml.sax.helpers;resolution:=optional,
-                        com.sun.msv.datatype;resolution:=optional,
-                        com.sun.msv.datatype.xsd;resolution:=optional,
-                        com.sun.org.apache.xml.internal.serialize;resolution:=optional,
-                       
-                        org.xmlpull.v1;resolution:=optional,
-                        
-                        org.gjt.xpp;resolution:=optional,
-                        org.jaxen;resolution:=optional,
-                        org.jaxen.dom4j;resolution:=optional,
-                        org.jaxen.pattern;resolution:=optional,
-                        org.jaxen.saxpath;resolution:=optional,
-                        org.relaxng.datatype;resolution:=optional,
-                       
-                        *</Import-Package> 
-						<!-- This statement can change the bundle classpath 
-						   <Bundle-ClassPath>.</Bundle-ClassPath> 
-						-->
-						<!-- This statements will use properties from the eclipse Manifest.MF file 
-						  <_include>META-INF/MANIFEST.MF</_include> 
-						-->
-					</instructions>
-				</configuration>
-			</plugin>
-			
-			<plugin>
-				<artifactId>maven-dependency-plugin</artifactId>
-
-				<executions>
-					<!--
-						This additional execution can extract all the JARs of the dependencies 
-						
-						<execution> <id>unpack-dependencies</id>
-						<phase>generate-resources</phase> <goals>
-						<goal>unpack-dependencies</goal> </goals> <configuration>
-						<includeGroupIds>org.swinglabs,org.jdesktop,com.sun</includeGroupIds>
-						</configuration> </execution>
-					-->
-					<execution>
-						<id>copy-dependencies</id>
-						<phase>process-sources</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${basedir}</outputDirectory>
-							<overWriteReleases>false</overWriteReleases>
-							<overWriteSnapshots>false</overWriteSnapshots>
-							<overWriteIfNewer>true</overWriteIfNewer>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!--  Cleanup necessary because of PDE tweaks -->
-			<plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<filesets>
-						<fileset>
-							<directory>${basedir}</directory>
-							<includes>
-								<include>*.jar</include>
-							</includes>
-							<followSymlinks>false</followSymlinks>
-						</fileset>
-					</filesets>
-				</configuration>
-			</plugin>
-    
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
-      
-      
-       <!--
-				Keep the MANIFEST.MF used by eclipse in sync with the MANIFEST.MF
-				created by the maven bundle plugin
-			-->
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<tasks>
-								<delete file="${basedir}/META-INF/MANIFEST.MF" />
-								<copy file="target/classes/META-INF/MANIFEST.MF" tofile="${basedir}/META-INF/MANIFEST.MF" />
-							</tasks>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-      <!-- <plugin>
-      	<groupId>org.apache.maven.plugins</groupId>
-      	<artifactId>maven-jar-plugin</artifactId>
-      	<configuration>
-      		<archive>
-      			<manifestFile>META-INF/MANIFEST.MF</manifestFile>
-      		</archive>
-        </configuration>
-      </plugin> -->
-      
-      
-      
-    </plugins>
   </build>
   
   
-  <dependencies>
-  	<dependency>
-  		<groupId>dom4j</groupId>
-  		<artifactId>dom4j</artifactId>
-  		<version>1.6.1</version>
-  		<scope>compile</scope>
-  		<optional>false</optional>
-  	</dependency>
-  	<dependency>
-  	<groupId>xml-apis</groupId>
-  <artifactId>xml-apis</artifactId>
-  <version>1.0.b2</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>de.mxro.utils</groupId>
-  		<artifactId>mxUtilities</artifactId>
-  		<version>[0.0.1,)</version>
-  		<optional>false</optional>
-  	</dependency>
-  	<dependency>
-  		<groupId>de.mxro.thrd.jtidy</groupId>
-  		<artifactId>thrdJTidy</artifactId>
-  		<version>[8.0.0,)</version>
-  		<optional>false</optional>
-  	</dependency>
-  </dependencies>
   <distributionManagement>
         <repository>
             <id>releases</id>
