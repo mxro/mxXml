@@ -33,7 +33,7 @@
                        
                         *
 		</module.importedPackages>
-		<module.exportedContents></module.exportedContents>
+		<module.exportedContents>org.dom4j.io</module.exportedContents>
 		<module.exportedPackages>de.mxro.xml,
  de.mxro.xml.style	
 		</module.exportedPackages>

@@ -4,7 +4,10 @@ Export-Package: de.mxro.xml;uses:="org.xml.sax.ext,org.xml.sax,org.dom
  ax.xml.transform,org.w3c.tidy,javax.xml.transform.stream,com.sun.org.
  apache.xml.internal.serialize,org.w3c.dom",de.mxro.xml.style;uses:="d
  e.mxro.filesystem,de.mxro.xml,org.xml.sax,de.mxro.filesystem.v01,de.m
- xro.utils.log"
+ xro.utils.log",org.dom4j.io;uses:="org.w3c.dom,org.xml.sax,org.xml.sa
+ x.ext,javax.xml.transform.sax,javax.xml.parsers,org.xml.sax.helpers,j
+ avax.xml.stream,javax.xml.stream.events,javax.xml.namespace,javax.xml
+ .stream.util,org.xmlpull.v1,org.gjt.xpp"
 Embed-Directory: target/dependency
 Built-By: mx
 Tool: Bnd-0.0.357
@@ -12,7 +15,7 @@ Bundle-Name: mxXml
 Created-By: Apache Maven Bundle Plugin
 Build-Jdk: 1.6.0_20
 Bundle-Version: 0.0.3.SNAPSHOT
-Bnd-LastModified: 1277934808631
+Bnd-LastModified: 1277958004884
 Embed-Transitive: false
 Bundle-ManifestVersion: 2
 Bundle-Description: XML utility classes
