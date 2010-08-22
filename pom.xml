@@ -6,7 +6,7 @@
 		<module.version>0.0.3-SNAPSHOT</module.version> <!--  Maven artifact version -->
 		<module.description>XML utility classes</module.description>
 		<module.url>http://www.mxro.de/</module.url>
-		<module.importedPackages>org.dom4j.io;resolution:=optional,
+		<module.importedPackages>org.dom4j.io,
 			javax.xml.namespace;resolution:=optional,
 			javax.xml.parsers;resolution:=optional,
 			javax.xml.stream;resolution:=optional,
@@ -120,8 +120,8 @@
 						<Export-Package>${module.exportedPackages}</Export-Package>
 						<Service-Component>${module.serviceDefinitions}
 						</Service-Component>
-						<Embed-Dependency>${module.embeddedDependencies}
-						</Embed-Dependency>
+						<!-- <Embed-Dependency>${module.embeddedDependencies}
+						</Embed-Dependency>-->
 						<Embed-Directory>target/dependency</Embed-Directory>
 						<Embed-Transitive>${module.embedTransitive}</Embed-Transitive>
 						<_exportcontents>${module.exportedContents}</_exportcontents>
