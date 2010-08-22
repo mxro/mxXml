@@ -1,99 +1,111 @@
-<?xml version="1.0" encoding="UTF-8"?><project>
-  <properties>
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<properties>
 		<module.group>de.mxro.xml</module.group>      <!--  Maven groupId -->
 		<module.name>mxXml</module.name>          <!--  Maven artifactId -->
 		<module.version>0.0.3-SNAPSHOT</module.version> <!--  Maven artifact version -->
 		<module.description>XML utility classes</module.description>
 		<module.url>http://www.mxro.de/</module.url>
 		<module.importedPackages>org.dom4j.io;resolution:=optional,
-                        javax.xml.namespace;resolution:=optional,
-                        javax.xml.parsers;resolution:=optional,
-                        javax.xml.stream;resolution:=optional,
-                        javax.xml.stream.events;resolution:=optional,
-                        javax.xml.stream.util;resolution:=optional,
-                        javax.xml.transform;resolution:=optional,
-                        javax.xml.transform.sax;resolution:=optional,
-                        javax.xml.transform.stream;resolution:=optional,
-                        org.w3c.dom,
-                        org.xml.sax,
-                        org.xml.sax.ext;resolution:=optional,
-                        org.xml.sax.helpers;resolution:=optional,
-                        com.sun.msv.datatype;resolution:=optional,
-                        com.sun.msv.datatype.xsd;resolution:=optional,
-                        com.sun.org.apache.xml.internal.serialize;resolution:=optional,
-                       
-                        org.xmlpull.v1;resolution:=optional,
-                        
-                        org.gjt.xpp;resolution:=optional,
-                        org.jaxen;resolution:=optional,
-                        org.jaxen.dom4j;resolution:=optional,
-                        org.jaxen.pattern;resolution:=optional,
-                        org.jaxen.saxpath;resolution:=optional,
-                        org.relaxng.datatype;resolution:=optional,
-                       
-                        *
+			javax.xml.namespace;resolution:=optional,
+			javax.xml.parsers;resolution:=optional,
+			javax.xml.stream;resolution:=optional,
+			javax.xml.stream.events;resolution:=optional,
+			javax.xml.stream.util;resolution:=optional,
+			javax.xml.transform;resolution:=optional,
+			javax.xml.transform.sax;resolution:=optional,
+			javax.xml.transform.stream;resolution:=optional,
+			org.w3c.dom,
+			org.xml.sax,
+			org.jdom;resolution:=optional,
+			electric.xml;resolution:=optional,
+			org.saxpath;resolution:=optional,
+			org.jdom.input;resolution:=optional,
+			org.saxpath.helpers;resolution:=optional,
+			org.xml.sax.ext;resolution:=optional,
+			org.xml.sax.helpers;resolution:=optional,
+			com.sun.msv.datatype;resolution:=optional,
+			com.sun.msv.datatype.xsd;resolution:=optional,
+			com.sun.org.apache.xml.internal.serialize;resolution:=optional,
+			org.xmlpull.v1;resolution:=optional,
+			org.gjt.xpp;resolution:=optional,
+			org.jaxen;resolution:=optional,
+			org.jaxen.dom4j;resolution:=optional,
+			org.jaxen.pattern;resolution:=optional,
+			org.jaxen.saxpath;resolution:=optional,
+			org.relaxng.datatype;resolution:=optional,
+			de.mxro.utils,
+			de.mxro.utils.log,
+			de.mxro.filesystem,
+			de.mxro.string.filter,
+			*
 		</module.importedPackages>
-		<module.exportedContents>org.dom4j.io</module.exportedContents>
+		<module.exportedContents></module.exportedContents>
 		<module.exportedPackages>de.mxro.xml,
- de.mxro.xml.style	
+			de.mxro.xml.style	
 		</module.exportedPackages>
-		<module.embeddedDependencies>dom4j;inline=true,xml-apis;inline=true
+		<module.embeddedDependencies>!
 		</module.embeddedDependencies>
 		<module.embedTransitive>false
 		</module.embedTransitive>
 		<module.serviceDefinitions>
 		</module.serviceDefinitions>
 	</properties>
-  
-  <!--  DEPENDENCIES -->
-  <dependencies>
-  	<dependency>
-  		<groupId>dom4j</groupId>
-  		<artifactId>dom4j</artifactId>
-  		<version>1.6.1</version>
-  		
-  		<optional>false</optional>
-  	</dependency>
-  	<dependency>
-  	<groupId>xml-apis</groupId>
-  <artifactId>xml-apis</artifactId>
-  <version>1.0.b2</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>de.mxro.utils</groupId>
-  		<artifactId>mxUtilities</artifactId>
-  		<version>[0.0.1,)</version>
-  		<optional>false</optional>
-  	</dependency>
-  	<dependency>
-  		<groupId>de.mxro.thrd.jtidy</groupId>
-  		<artifactId>thrdJTidy</artifactId>
-  		<version>[8.0.0,)</version>
-  		<optional>false</optional>
-  	</dependency>
-  </dependencies>
-  
-  <modelVersion>4.0.0</modelVersion>
- <groupId>${module.group}</groupId>
+
+	<!--  DEPENDENCIES -->
+	<dependencies>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+
+			<optional>false</optional>
+		</dependency>
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.0.b2</version>
+		</dependency>
+		<dependency>
+			<groupId>de.mxro.utils</groupId>
+			<artifactId>mxUtilities</artifactId>
+			<version>[0.0.1,)</version>
+			<optional>false</optional>
+		</dependency>
+		<dependency>
+			<groupId>de.mxro.thrd.jtidy</groupId>
+			<artifactId>thrdJTidy</artifactId>
+			<version>[8.0.0,)</version>
+			<optional>false</optional>
+		</dependency>
+		<dependency>
+			<groupId>de.mxro.thrd.dom4j</groupId>
+			<artifactId>thrdDom4j</artifactId>
+			<version>[0.0.1,)</version>
+		</dependency>
+	</dependencies>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>${module.group}</groupId>
 	<artifactId>${module.name}</artifactId>
 	<version>${module.version}</version>
 	<name>${module.name}</name>
 	<description>${module.description}</description>
 	<url>${module.url}</url>
 	<packaging>bundle</packaging>
-	
-  <build>
-  	
 
-    <plugins>
-     <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
-     <!-- FOR BUNDLE MANAGEMENT -->
+	<build>
+
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<!-- FOR BUNDLE MANAGEMENT -->
 			<!--  The Maven bundle plugin generates Meta-data required for OSGi  -->
 
 			<plugin>
@@ -116,9 +128,9 @@
 					</instructions>
 				</configuration>
 			</plugin>
-			
+
 			<!-- MAVEN ECLIPSE PLUGIN -->
-               <!--
+			<!--
 				Dependency Plugin used to copy the dependency JARs into the root
 				project folder. There the Maven eclipse plugin will add them to the
 				classpath of PDE projects.
@@ -182,21 +194,23 @@
 					</execution>
 				</executions>
 			</plugin>
-    
-     
-     
-    
-   
-    </plugins>
-    
-    <!-- RESOURCES -->
-    <resources>
-			<!-- This entry makes sure that resources, which lie in the same package as
-			     Java classes, are copied into the target. Often external libraries
-			     require resources, which are loaded using Class.getResource or
-			     Class.getResourceAsStream and which are in a subpackage of the class.
-			     For instance, the NetBeans template for the Swing Application Framework
-			     does so.  -->
+
+
+
+
+
+		</plugins>
+
+		<!-- RESOURCES -->
+		<resources>
+			<!--
+				This entry makes sure that resources, which lie in the same package
+				as Java classes, are copied into the target. Often external
+				libraries require resources, which are loaded using
+				Class.getResource or Class.getResourceAsStream and which are in a
+				subpackage of the class. For instance, the NetBeans template for the
+				Swing Application Framework does so.
+			-->
 			<resource>
 				<filtering>false</filtering>
 				<directory>src/main/java</directory>
@@ -205,43 +219,49 @@
 				</includes>
 				<excludes>
 					<exclude>**/*.java</exclude>
-				</excludes> 
+				</excludes>
 			</resource>
-			<!-- This entry makes sure component definitions for OSGi declarative services
-			     are copied into the destination  -->
+			<!--
+				This entry makes sure component definitions for OSGi declarative
+				services are copied into the destination
+			-->
 			<resource>
 				<targetPath>OSGI-INF</targetPath>
 				<filtering>false</filtering>
 				<directory>OSGI-INF</directory>
-			    <includes>
+				<includes>
 					<include>**</include>
 				</includes>
 			</resource>
-			<!-- I really do not know why know a manual entry for src/main/resources is 
-			     necessary? It should be included following the Maven convention. -->
-			<resource>		
+			<!--
+				I really do not know why know a manual entry for src/main/resources
+				is necessary? It should be included following the Maven convention.
+			-->
+			<resource>
 				<filtering>false</filtering>
 				<directory>src/main/resources</directory>
-			    <includes>
+				<includes>
 					<include>**</include>
 				</includes>
 			</resource>
-    </resources>
-    <!-- Resources End -->
-    
-  </build>
-  
-  
-  <distributionManagement>
-        <repository>
-            <id>releases</id>
-            <name>Internal Releases</name>
-            <url>http://STF-6121-DSK06.com.auckland.ac.nz:8080/nexus/content/repositories/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>Internal Snapshots</name>
-            <url>http://STF-6121-DSK06.com.auckland.ac.nz:8080/nexus/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
+		</resources>
+		<!-- Resources End -->
+
+	</build>
+
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Internal Releases</name>
+			<url>http://STF-6121-DSK06.com.auckland.ac.nz:8080/nexus/content/repositories/releases
+			</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Internal Snapshots</name>
+			<url>http://STF-6121-DSK06.com.auckland.ac.nz:8080/nexus/content/repositories/snapshots
+			</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
