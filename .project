@@ -37,6 +37,11 @@
 			<location>C:/Users/Max/.m2/repository/jaxen/jaxen/1.0-FCS/jaxen-1.0-FCS.jar</location>
 		</link>
 		<link>
+			<name>jtidy-8.0.jar</name>
+			<type>1</type>
+			<location>C:/Users/Max/.m2/repository/org/w3c/tidy/jtidy/8.0/jtidy-8.0.jar</location>
+		</link>
+		<link>
 			<name>pull-parser-2.1.10.jar</name>
 			<type>1</type>
 			<location>C:/Users/Max/.m2/repository/pull-parser/pull-parser/2.1.10/pull-parser-2.1.10.jar</location>

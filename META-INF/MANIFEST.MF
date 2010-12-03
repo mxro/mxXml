@@ -12,7 +12,7 @@ Bundle-Name: mxXml
 Created-By: Apache Maven Bundle Plugin
 Build-Jdk: 1.6.0_22
 Bundle-Version: 0.0.3.SNAPSHOT
-Bnd-LastModified: 1287778474502
+Bnd-LastModified: 1291000947332
 Embed-Transitive: false
 Bundle-ManifestVersion: 2
 Bundle-Description: XML utility classes
