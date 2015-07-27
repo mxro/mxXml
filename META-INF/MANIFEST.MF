@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1437982904771
+Bnd-LastModified: 1437982983037
 Build-Jdk: 1.7.0_79
 Built-By: adminuser
 Bundle-Description: XML utility classes
@@ -20,18 +20,18 @@ Import-Package: org.dom4j.io;version="[0.0,1)",javax.xml.transform;resol
  rs;resolution:=optional,com.sun.org.apache.xml.internal.serialize;resol
  ution:=optional,de.mxro.utils.log;version="[0.0,1)",de.mxro.filesystem;
  version="[0.0,1)",de.mxro.string.filter;version="[0.0,1)",de.mxro.files
- ystem.v01;version="[0.0,1)",org.w3c.tidy;version="[9.0,10)",org.jaxen.s
- axpath;resolution:=optional,javax.xml.namespace;resolution:=optional,ja
- vax.xml.transform.sax;resolution:=optional,org.jdom;resolution:=optiona
- l,org.jdom.input;resolution:=optional,de.mxro.utils;version="[0.0,1)",o
- rg.gjt.xpp;resolution:=optional;version="[0.0,1)",org.saxpath.helpers;r
- esolution:=optional,org.xmlpull.v1;resolution:=optional,javax.xml.strea
- m.util;resolution:=optional,org.jaxen.dom4j;resolution:=optional;versio
- n="[0.0,1)",javax.xml.stream.events;resolution:=optional,org.relaxng.da
- tatype;resolution:=optional;version="[0.0,1)",org.jaxen;resolution:=opt
- ional;version="[0.0,1)",javax.xml.stream;resolution:=optional,org.jaxen
- .pattern;resolution:=optional;version="[0.0,1)",javax.xml.parsers;resol
- ution:=optional,com.sun.msv.datatype.xsd;resolution:=optional;version="
- [0.0,1)",electric.xml;resolution:=optional,com.sun.msv.datatype;resolut
- ion:=optional;version="[0.0,1)",org.saxpath;resolution:=optional
+ ystem.v01;version="[0.0,1)",org.w3c.tidy;version="[9.0,10)",com.sun.msv
+ .datatype.xsd;resolution:=optional;version="[0.0,1)",org.jaxen.pattern;
+ resolution:=optional;version="[0.0,1)",de.mxro.utils;version="[0.0,1)",
+ org.saxpath;resolution:=optional,org.saxpath.helpers;resolution:=option
+ al,org.relaxng.datatype;resolution:=optional;version="[0.0,1)",org.xmlp
+ ull.v1;resolution:=optional,javax.xml.transform.sax;resolution:=optiona
+ l,org.jdom.input;resolution:=optional,javax.xml.stream.events;resolutio
+ n:=optional,org.jaxen;resolution:=optional;version="[0.0,1)",javax.xml.
+ stream;resolution:=optional,org.jaxen.saxpath;resolution:=optional,org.
+ gjt.xpp;resolution:=optional;version="[0.0,1)",javax.xml.parsers;resolu
+ tion:=optional,org.jaxen.dom4j;resolution:=optional;version="[0.0,1)",j
+ avax.xml.stream.util;resolution:=optional,javax.xml.namespace;resolutio
+ n:=optional,com.sun.msv.datatype;resolution:=optional;version="[0.0,1)"
+ ,org.jdom;resolution:=optional,electric.xml;resolution:=optional
 Tool: Bnd-2.1.0.20130426-122213
